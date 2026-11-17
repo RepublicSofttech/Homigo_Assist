@@ -1,0 +1,9 @@
+# Local run of Homigo Assist on its own (expects the Homigo API on the host at :8000).
+services:
+  assist:
+    build: .
+    env_file: .env
+    environment:
+      HOMIGO_API_URL: ${HOMIGO_API_URL:-http://host.docker.internal:8000/api/v1}
+    ports: ["8001:8001"]
+    extra_hosts: ["host.docker.internal:host-gateway"]
